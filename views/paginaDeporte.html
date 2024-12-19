@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">Club Atletico </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="separator">
+    <form id="createSport">
+
+        <label for="sportName"> Nombre: </label>
+        <input type="text" id="sportName" name="sportName" required> <br><br>
+
+        <label for="sportSchedule"> Horario: </label>
+        <input type="text" id="sportSchedule" name="sportSchedule" required> <br><br>
+
+        <label for="sportPrice"> Precio: </label>
+        <input type="number" id="sportPrice" name="sportPrice" required> <br><br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+    <div id="registeredInfo">  
+    </div>
+    <script type="module" src="/public/js/createSport.js"></script>
+
+
+</body>
+
+</html>

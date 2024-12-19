@@ -1,0 +1,61 @@
+### obtener todos los user
+#
+GET http://localhost:3000/api/user
+
+
+### obtener un user con un id
+GET http://localhost:3000/api/user/66c669a695f84289b06d0db5
+
+
+### crear un nuevo user
+
+POST http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+  "name": "Manuel ",
+  "email": "MgExtremeYT@gmail.com",
+  "numberPhone": "341254789",
+  "adress": "Mendoza y Colon",
+  "password": "Hola1237",
+  "locality": "66c66f40851822950f8265f6",
+  "memberships": [],
+  "role": "dasasadads"
+}
+
+
+
+### Modificar un User (PUT --> MODIFICA RECURSO COMPLETO IDEMPOTENTE Y PATCH --> NO NECESARIO IDEMPOTENTE)
+
+PUT http://localhost:3000/api/user/66c6756b44128a1d72c4bfd8
+Content-Type: application/json
+
+{
+  "name": "Manuel G",
+  "email": "MgExtremeYT@gmail.com",
+  "numberPhone": "341254789",
+  "adress": "Mendoza y Colon",
+  "password": "Hola1237",
+  "locality": "a",
+  "memberships": [],
+  "role": "admin"
+}
+
+
+
+### Modificar un user PATCH --> Recurso Parcial
+PATCH http://localhost:3000/api/user/66c6756b44128a1d72c4bfd8
+Content-Type: application/json
+
+{
+  "name": "Eduardow",
+  "email": "EduardoSKIBIDI@gmail.com",
+  "password": "SKIBIDIFAN",
+  "locality": ""
+}
+
+
+### Borrar un USER
+DELETE  http://localhost:3000/api/user/66c79bf639d66ad53f1b3bd7
+
+

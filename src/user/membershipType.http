@@ -1,0 +1,19 @@
+###
+GET http://localhost:3000/api/user/membershipType/
+
+###
+GET http://localhost:3000/api/user/membershipType/66cc9992981e6a4ff5e1ca38
+
+
+###
+POST 66cc9992981e6a4ff5e1ca38
+Content-Type: application/json
+
+{
+    "description": "Individual",
+    "price": 1000000,
+    "memberships": ["66cba2d4e4782529de9293f3"]
+}
+
+###
+DELETE http://localhost:3000/api/user/membershipType/66cc9abfa81a30cc378c98f3

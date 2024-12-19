@@ -1,0 +1,29 @@
+###
+GET http://localhost:3000/api/user/payment
+
+###
+GET http://localhost:3000/api/user/payment/66cca4edaafa102bb5aa71c1
+
+###
+POST http://localhost:3000/api/user/payment
+Content-Type: application/json
+
+{
+    "state": "No Pagadp",
+    "payDay": "",
+    "membership": "66cba2c8e4782529de9293f1" 
+}
+
+###
+PUT http://localhost:3000/api/user/payment/66cca7fd4a98deed246bda02
+Content-Type: application/json
+
+{
+    "state": "Pagado",
+    "payDay": "24/08/2024",
+    "membership": "66cba2c8e4782529de9293f1" 
+}
+
+
+### 
+DELETE http://localhost:3000/api/user/payment/66cca7c84a98deed246bda01

@@ -1,0 +1,18 @@
+###
+GET http://localhost:3000/api/user/sport
+
+
+### 
+
+GET http://localhost:3000/api/user/sport
+
+###
+POST http://localhost:3000/api/user/sport
+Content-Type: application/json
+
+{
+    "sportName": "Futbol",
+    "schedule": "Lunes, Viernes 17 HS",
+    "price": 20000,
+    "memberships": ["66cba2c8e4782529de9293f1"]
+}

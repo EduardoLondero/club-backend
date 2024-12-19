@@ -1,0 +1,37 @@
+###
+GET http://localhost:3000/api/user/membership
+
+
+###
+GET http://localhost:3000/api/user/membership/66cba2d4e4782529de9293f3
+
+###
+POST http://localhost:3000/api/user/membership
+Content-Type: application/json
+
+{
+    "membershipNumber": "ASDAS85121",
+    "type": "66cc9992981e6a4ff5e1ca38",
+    "startDate": "12/01/2024",
+    "endDate": "",
+    "user": "66c79c22f36c900e5f1a1424",
+    "payments": [""],
+    "sports": [""]
+}
+
+
+###
+PUT http://localhost:3000/api/user/membership/66cba2d4e4782529de9293f3
+Content-Type: application/json
+
+{
+    "membershipNumber": "ASDAS85121",
+    "type": "Familiar",
+    "startDate": "12/01/2024",
+    "endDate": "12/07/2024",
+    "user": "66c79c22f36c900e5f1a1424"
+
+}
+
+###
+DELETE http://localhost:3000/api/user/membership/66cba2cbe4782529de9293f2

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2020",               // Targeting ES2020 is fine
+    "module": "ES2022",               // ES Modules support (good for modern Node.js)
+    "moduleResolution": "node",       // Use Node's module resolution algorithm
+    "sourceMap": true,
+    "outDir": "./dist",               // Output compiled files to ./dist
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                   // Enable strict mode
+    "alwaysStrict": true,
+    "skipLibCheck": true,             // Skip type-checking of declaration files
+    "emitDecoratorMetadata": true,    // Enable support for decorators
+    "experimentalDecorators": true    // Enable experimental decorator syntax
+  },
+  "include": ["src/**/*", "**/*.ts"],  // Include all TypeScript files
+  "exclude": ["node_modules"]          // Exclude node_modules folder
+}

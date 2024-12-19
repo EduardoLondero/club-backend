@@ -1,0 +1,36 @@
+###
+GET http://localhost:3000/api/user/locality
+
+
+
+###
+
+GET http://localhost:3000/api/user/locality/66c797e895dad6e58eb01959
+
+
+###
+
+POST http://localhost:3000/api/user/locality
+Content-Type: application/json
+
+{
+  "name": "Garay",
+  "postalCode": 2450,
+  "users": ["66c6756b44128a1d72c4bfd8"]
+}
+
+
+###
+
+PUT http://localhost:3000/api/user/locality/66c66b52d7da2dcd4e448489
+Content-Type: application/json
+
+{
+  "name": "Rosario",
+  "postalCode": 2000,
+  "users": ["66c6756b44128a1d72c4bfd8"]
+}
+
+###
+ 
+DELETE http://localhost:3000/api/user/locality/66c66ea1851822950f8265f1

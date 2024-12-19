@@ -1,0 +1,29 @@
+###
+GET http://localhost:3000/api/user/neighbourhood
+
+
+###
+GET http://localhost:3000/api/user/neighbourhood/66cb95c63bc65c5c2a35f888
+
+###
+POST http://localhost:3000/api/user/neighbourhood
+Content-Type: application/json
+
+{
+    "name": "Barrio Matheu",
+    "locality": "66c66b52d7da2dcd4e448489"
+}
+
+
+###
+PUT http://localhost:3000/api/user/neighbourhood/66cb95c63bc65c5c2a35f888
+Content-Type: application/json
+
+{
+    "name": "Barrio Martin",
+    "locality": "66c66b52d7da2dcd4e448489"
+}
+
+
+###
+DELETE http://localhost:3000/api/user/neighbourhood/66c7ad6aaf42ce0973ac7198
