@@ -1,0 +1,36 @@
+###
+GET http://localhost:3000/api/user/sport
+
+
+### 
+
+GET http://localhost:3000/api/user/sport/6
+
+###
+POST http://localhost:3000/api/user/sport
+Content-Type: application/json
+
+{
+    "sportName": "Jeje",
+    "schedule": "Lunes, Viernes 17 HS",
+    "scheduleEnd": "Lunes, Viernes 20 HS",
+    "imageUrl": "https://i.imgur.com/jgh1lNF.jpeg",
+    "price": 84000,
+    "memberships": []
+}
+
+###
+POST http://localhost:3000/api/user/sport
+Content-Type: application/json
+
+{
+    "sportName": "Voley",
+    "schedule": "Martes, Jueves 17 HS",
+    "scheduleEnd": "Martes, Jueves 20 HS",
+    "price": 40000,
+    "memberships": [22]
+}
+
+
+###
+DELETE http://localhost:3000/api/user/sport/5

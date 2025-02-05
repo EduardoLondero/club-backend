@@ -1,0 +1,40 @@
+###
+GET http://localhost:3000/api/user/membership
+
+
+###
+GET http://localhost:3000/api/user/membership/32
+
+
+###
+POST http://localhost:3000/api/user/membership
+Content-Type: application/json
+
+{ 
+      "startDate": "2025-01-01",
+      "endDate": "2025-01-20",
+      "expireDate": "2025-01-30",
+      "oUsuarioId": 4,
+      "oTipo_MembresiaId": 1,
+      "sportsIds": []
+}
+
+
+
+
+###
+PUT http://localhost:3000/api/user/membership/1
+Content-Type: application/json
+
+{
+  "startDate": "2025-01-28",
+  "endDate": "2026-01-28",
+  "expireDate": "2026-02-01",
+  "oUsuarioId": 1,
+  "oTipo_MembresiaId": 2,
+  "oDeporteId": [1, 2],  
+  "payments": []
+}
+
+###
+DELETE http://localhost:3000/api/user/membership/

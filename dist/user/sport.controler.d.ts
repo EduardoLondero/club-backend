@@ -1,0 +1,10 @@
+import { NextFunction, Request, Response } from 'express';
+declare function sanitizeSportTypeInput(req: Request, res: Response, next: NextFunction): void;
+declare function findAll(req: Request, res: Response): Promise<void>;
+declare function findOne(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function add(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function update(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function remove(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function findByName(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare const inscribirDeporte: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+export { sanitizeSportTypeInput, findAll, findOne, add, update, remove, findByName, inscribirDeporte };

@@ -1,0 +1,61 @@
+###
+
+GET http://localhost:3000/api/user/user
+
+
+###
+GET http://localhost:3000/api/user/user/1
+
+
+###
+
+POST http://localhost:3000/api/user/user
+Content-Type: application/json
+
+{
+  "dni": 45057714,
+  "fullName": "Alejo Agustin Ojeda",
+  "sex": "M",
+  "birthDate":"2025-01-28",
+  "numberPhone":"3412793458",
+  "password": "aa",
+  "email": "a",
+  "address": "Mendoza y Colon",
+  "locality": "9",
+  "memberships": [],
+  "role": 1
+}
+
+
+
+###
+
+PUT http://localhost:3000/api/user/user/66c6756b44128a1d72c4bfd8
+Content-Type: application/json
+
+{
+  "email": "MgExtremeYT@gmail.com",
+  "numberPhone": "341254789",
+  "address": "Mendoza y Colon",
+  "password": "Hola1237",
+  "locality": "a",
+  "memberships": [],
+}
+
+
+
+###
+PATCH http://localhost:3000/api/user/user/66c6756b44128a1d72c4bfd8
+Content-Type: application/json
+
+{
+  "email": "Eduardo@gmail.com",
+  "password": "locura",
+  "locality": ""
+}
+
+
+### 
+DELETE  http://localhost:3000/api/user/user/
+
+

@@ -1,0 +1,26 @@
+###
+GET http://localhost:3000/api/user/role
+
+###
+GET http://localhost:3000/api/user/role/1
+
+###
+POST http://localhost:3000/api/user/role
+Content-Type: application/json
+
+{
+  "descriptionRole": "Usuario",
+  "dateRole": "2025-01-28"
+}
+
+
+###
+PUT http://localhost:3000/api/user/role/1
+Content-Type: application/json
+
+{
+  "name": "Super Administrator"
+}
+
+###
+DELETE http://localhost:3000/api/user/role/1

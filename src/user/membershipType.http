@@ -1,0 +1,21 @@
+###
+GET http://localhost:3000/api/user/membershipType/
+
+###
+GET http://localhost:3000/api/user/membershipType/66cc9992981e6a4ff5e1ca38
+
+
+###
+POST http://localhost:3000/api/user/membershipType/
+Content-Type: application/json
+
+{
+    "description": "Membresía a",
+    "price": 777555,
+    "benefits": "Acceso al club",
+    "requirements": "sin restricciones.",
+    "memberships": []
+}
+
+###
+DELETE http://localhost:3000/api/user/membershipType/66cc9abfa81a30cc378c98f3

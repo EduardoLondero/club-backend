@@ -1,0 +1,11 @@
+import { NextFunction, Request, Response } from 'express';
+declare function sanitizeMembershipInput(req: Request, res: Response, next: NextFunction): void;
+declare function findAll(req: Request, res: Response): Promise<void>;
+declare function findOne(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function add(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function update(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function remove(req: Request, res: Response): Promise<Response<any, Record<string, any>> | undefined>;
+declare function getMembershipsByUser(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
+declare function cancelMembership(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
+declare function removeSportFromMembership(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
+export { sanitizeMembershipInput, findAll, findOne, add, update, remove, getMembershipsByUser, cancelMembership, removeSportFromMembership };

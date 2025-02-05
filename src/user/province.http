@@ -1,0 +1,29 @@
+###
+GET http://localhost:3000/api/user/province
+
+
+###
+GET http://localhost:3000/api/user/province/12
+
+
+###
+POST http://localhost:3000/api/user/province
+Content-Type: application/json
+
+{
+  "nameprovince": " Fe",
+  "localities": []
+}
+ 
+
+###
+PUT http://localhost:3000/api/user/province/2
+Content-Type: application/json
+
+{
+  "nameprovince": "Buenos Aires"
+}
+
+
+###
+DELETE http://localhost:3000/api/user/province/4

@@ -1,0 +1,31 @@
+###
+GET http://localhost:3000/api/user/payment
+
+###
+GET http://localhost:3000/api/user/payment/1
+
+###
+POST http://localhost:3000/api/user/payment
+Content-Type: application/json
+
+{
+    "state": "Abonado",
+    "payDay": "2025-01-28",
+    "totalPrice":15000,
+    "membership": 43
+}
+
+###
+PUT http://localhost:3000/api/user/payment/1
+Content-Type: application/json
+
+{
+    "state": "Pagado",
+    "payDay": "2025-01-27",
+    "totalPrice": 15000,
+    "membership": 22
+}
+
+
+### 
+DELETE http://localhost:3000/api/user/payment/66cca7c84a98deed246bda01

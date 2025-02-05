@@ -1,0 +1,41 @@
+###
+GET http://localhost:3000/api/user/locality
+
+
+###
+GET http://localhost:3000/api/user/locality/findLocationByProvinceId/2
+
+
+###
+
+GET http://localhost:3000/api/user/locality/9
+
+
+###
+
+POST http://localhost:3000/api/user/locality
+Content-Type: application/json
+
+{
+  "name": "San Lorenzo",
+  "postalCode": 2000,
+  "users": [],
+  "oProvinciaId": 1
+}
+
+
+###
+
+PUT http://localhost:3000/api/user/locality/10
+Content-Type: application/json
+
+{
+  "name": "Mister Lorenzo",
+  "postalCode": 2000,
+  "users": [],
+  "oProvinciaId": 1
+}
+
+###
+ 
+DELETE http://localhost:3000/api/user/locality/66c66ea1851822950f8265f1
