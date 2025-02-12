@@ -59,7 +59,19 @@ async function findOne(req: Request, res: Response) {
 
 async function add(req: Request, res: Response) {
   try {
-    const { locality, memberships, role, ...userData } = req.body.sanitizedInput;
+
+    const { locality, memberships, role, dni, email, ...userData } = req.body.sanitizedInput;
+
+
+    const existingUser = await em.findOne(User, {  dni  });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Ya existe un usuario con ese DNI' });
+    }
+
+    const existingUserEmail = await em.findOne(User, {  email  });
+    if (existingUserEmail) {
+      return res.status(400).json({ message: 'Ya existe un usuario con ese Email' });
+    }
 
     const user = em.create(User, userData);
 

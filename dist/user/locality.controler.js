@@ -56,6 +56,19 @@ async function findOne(req, res) {
 async function add(req, res) {
     try {
         const { sanitizedInput } = req.body;
+        const { postalCode, province } = sanitizedInput;
+        const existingLocalityPostalCode = await em.findOne(Locality, { postalCode });
+        const existingLocalityProvinceId = await em.findOne(Locality, { province });
+        const existingLocality = await em.findOne(Locality, { postalCode, province });
+        if (existingLocality) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese código postal en esta provincia' });
+        }
+        if (existingLocalityPostalCode) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese código postal' });
+        }
+        if (existingLocalityProvinceId) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese nombre en esta provincia' });
+        }
         const locality = em.create(Locality, sanitizedInput);
         await em.flush();
         res.status(201).json({ message: 'Localidad creada', data: locality });
@@ -67,10 +80,24 @@ async function add(req, res) {
 async function update(req, res) {
     try {
         const id = parseInt(req.params.id, 10);
+        const { sanitizedInput } = req.body;
+        const { postalCode, province } = sanitizedInput;
         if (isNaN(id)) {
             return res.status(400).json({ message: 'Formato de ID invalido' });
         }
         const locality = await em.findOneOrFail(Locality, { id });
+        const existingLocalityPostalCode = await em.findOne(Locality, { postalCode });
+        const existingLocalityProvinceId = await em.findOne(Locality, { province });
+        const existingLocality = await em.findOne(Locality, { postalCode, province });
+        if (existingLocality) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese código postal en esta provincia' });
+        }
+        if (existingLocalityPostalCode) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese código postal' });
+        }
+        if (existingLocalityProvinceId) {
+            return res.status(400).json({ message: 'Ya existe una localidad con ese nombre en esta provincia' });
+        }
         em.assign(locality, req.body.sanitizedInput);
         await em.flush();
         res.status(200).json({ message: 'Localidad actualizada correctamente' });

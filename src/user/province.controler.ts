@@ -45,9 +45,21 @@ async function findOne(req: Request, res: Response) {
 
 async function add(req: Request, res: Response) {
   try {
+
+    const {  nameprovince} = req.body.sanitizedInput;
+
+    const existingProvince = await em.findOne(Province, { nameprovince });
+
+    if (existingProvince) {
+      return res.status(400).json({ message: 'Ya existe una provincia con ese nombre' });
+    }
+
     const province = em.create(Province, req.body.sanitizedInput);
+
     await em.flush();
+
     res.status(201).json({ message: 'Provincia creada', data: province });
+
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
@@ -56,19 +68,32 @@ async function add(req: Request, res: Response) {
 async function update(req: Request, res: Response) {
   try {
     const id = parseInt(req.params.id, 10);
+    const { nameprovince } = req.body.sanitizedInput;
 
     if (isNaN(id)) {
-      return res.status(400).json({ message: 'Formato de ID invalido' });
+      return res.status(400).json({ message: 'Formato de ID inválido' });
     }
 
     const provinceToUpdate = await em.findOneOrFail(Province, { id });
+
+    const existingProvince = await em.findOne(Province, { 
+      nameprovince, 
+      id: { $ne: id }  
+    });
+
+    if (existingProvince) {
+      return res.status(400).json({ message: 'Ya existe una provincia con ese nombre' });
+    }
+
     em.assign(provinceToUpdate, req.body.sanitizedInput);
     await em.flush();
-    res.status(200).json({ message: 'Provincia actualizada', data: provinceToUpdate });
+
+    res.status(200).json({ message: 'Provincia actualizada correctamente', data: provinceToUpdate });
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message || 'Error interno del servidor' });
   }
 }
+
 
 async function remove(req: Request, res: Response) {
   try {
