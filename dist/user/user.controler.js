@@ -49,7 +49,16 @@ async function findOne(req, res) {
 }
 async function add(req, res) {
     try {
-        const { locality, memberships, role, dni, email, ...userData } = req.body.sanitizedInput;
+        const { sanitizedInput } = req.body;
+        console.log("Datos recibidos en el backend:", sanitizedInput);
+        const { locality, memberships, role, dni, email } = sanitizedInput;
+        const parsedDni = parseInt(dni, 10);
+        if (isNaN(parsedDni)) {
+            return res.status(400).json({ message: "El DNI debe ser un número válido." });
+        }
+        if (!dni) {
+            return res.status(400).json({ message: "El campo DNI es obligatorio." });
+        }
         const existingUser = await em.findOne(User, { dni });
         if (existingUser) {
             return res.status(400).json({ message: 'Ya existe un usuario con ese DNI' });
@@ -58,7 +67,7 @@ async function add(req, res) {
         if (existingUserEmail) {
             return res.status(400).json({ message: 'Ya existe un usuario con ese Email' });
         }
-        const user = em.create(User, userData);
+        const user = em.create(User, { ...sanitizedInput, dni: parsedDni });
         if (locality) {
             const localityEntity = await em.findOneOrFail(Locality, { id: locality });
             user.locality = localityEntity;
