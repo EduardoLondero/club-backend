@@ -111,39 +111,51 @@ async function add(req: Request, res: Response) {
 async function update(req: Request, res: Response) {
   try {
     const id = parseInt(req.params.id, 10);
-
     if (isNaN(id)) {
-      return res.status(400).json({ message: 'Formato de ID invalido' });
+      return res.status(400).json({ message: 'Formato de ID inválido' });
     }
+
+    const { sanitizedInput } = req.body;
+    const { dni, email } = sanitizedInput;
 
     const userToUpdate = await em.findOneOrFail(User, { id });
 
-    em.assign(userToUpdate, req.body.sanitizedInput);
+    const existingUserDNI = await em.findOne(User, { dni });
+    if (existingUserDNI && existingUserDNI.id !== id) {
+      return res.status(400).json({ message: 'Ya existe un usuario con ese DNI' });
+    }
 
-    if (req.body.sanitizedInput.locality) {
-      const localityEntity = await em.findOneOrFail(Locality, { id: req.body.sanitizedInput.locality });
+    const existingUserEmail = await em.findOne(User, { email });
+    if (existingUserEmail && existingUserEmail.id !== id) {
+      return res.status(400).json({ message: 'Ya existe un usuario con ese Email' });
+    }
+
+    em.assign(userToUpdate, sanitizedInput);
+
+    if (sanitizedInput.locality) {
+      const localityEntity = await em.findOneOrFail(Locality, { id: sanitizedInput.locality });
       userToUpdate.locality = localityEntity;
     }
 
-    if (req.body.sanitizedInput.role) {
-      const roleEntity = await em.findOneOrFail(Role, { id: req.body.sanitizedInput.role });
+    if (sanitizedInput.role) {
+      const roleEntity = await em.findOneOrFail(Role, { id: sanitizedInput.role });
       userToUpdate.role = roleEntity;
     }
 
-    if (req.body.sanitizedInput.memberships) {
+    if (sanitizedInput.memberships) {
       const updatedMemberships = await Promise.all(
-        req.body.sanitizedInput.memberships.map(async (membershipId: number) => {
-          const membershipEntity = await em.findOneOrFail(Membership, { id: membershipId });
-          return membershipEntity;
+        sanitizedInput.memberships.map(async (membershipId: number) => {
+          return await em.findOneOrFail(Membership, { id: membershipId });
         })
       );
       userToUpdate.memberships.set(updatedMemberships);
     }
 
     await em.flush();
-    res.status(200).json({ message: 'Usuario actualizado', data: userToUpdate });
+    return res.status(200).json({ message: 'Usuario actualizado', data: userToUpdate });
+
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 }
 
